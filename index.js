@@ -54,7 +54,7 @@ const bytesToHumanReadableSize = ( bytes, decimals = 2 ) => {
 
     const magnitude = 1024;
 
-    const dm = ( decimals < 0 )
+    const dm = ( decimals <= 0 || decimals === null || decimals === undefined )
         ? 0
         : decimals;
 
@@ -67,7 +67,7 @@ const bytesToHumanReadableSize = ( bytes, decimals = 2 ) => {
 };
 
 
-const roughSizeOf = ( object ) => {
+const roughSizeOf = ( object, humanReadable = true ) => {
 
     let objectList = [];
     let stack = [ object ];
@@ -89,7 +89,7 @@ const roughSizeOf = ( object ) => {
     
     }
 
-    return bytesToHumanReadableSize( bytes, 2 );
+    return ( humanReadable ) ? bytesToHumanReadableSize( bytes ) : bytes;
 
 };
 
@@ -210,7 +210,7 @@ const decodeUTF8 = ( bytes ) => {
 
 const compress = ( arr ) => {
 
-    const compressedArrBytes = pako.deflate( arr );
+    const compressedArrBytes = pako.deflate( arr, { level: 9 } );
 
     return compressedArrBytes;
 
@@ -273,8 +273,7 @@ const hashToString = ( hash, consoleInfo = false ) => {
 };
 
 
-export {
-
+module.exports = {
     convertHexToBytes,
     convertBytesToHex,
     bytesToHumanReadableSize,
@@ -285,5 +284,4 @@ export {
     decompress,
     stringToHash,
     hashToString
-
 };
