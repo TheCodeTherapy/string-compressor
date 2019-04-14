@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/mgzme/string-compressor#readme",
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.12.4",
     "mocha": "^6.1.3"
