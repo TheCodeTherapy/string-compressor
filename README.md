@@ -29,6 +29,7 @@ As part of the whole implementation process, I also created some methods to roug
 
 ## TODO:
 
-Some more test thingies before making it "npm install --save" available.
+Some more test thingies before making it "npm install --save" available. Most important tests already implemented. You can watch them go by:
+- ```npm test```
 
 ### Have fun using it.
